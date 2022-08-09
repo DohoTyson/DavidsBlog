@@ -1,0 +1,11 @@
+@host=https://localhost:7201
+
+Post {{host}}/auth/login
+Content-Type: application/json
+
+{
+    "email" : "daoe@outlook.de",
+    "password" : "doho@1990"
+}
+
+###
