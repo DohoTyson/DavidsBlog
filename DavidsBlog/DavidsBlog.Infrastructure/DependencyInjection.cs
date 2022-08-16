@@ -4,6 +4,8 @@ using DavidsBlog.Infrastructure.Authentication;
 using DavidsBlog.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using DavidsBlog.Application.Common.Interfaces.Persitence;
+using DavidsBlog.Infrastructure.Persistence;
 
 namespace DavidsBlog.Infrastructure;
 
@@ -17,6 +19,8 @@ public static class DependencyInjection
 
         collection.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
         collection.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+
+        collection.AddScoped<IUserRepository, UserRepository>();
         return collection;
     }
 }

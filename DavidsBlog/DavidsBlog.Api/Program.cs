@@ -1,24 +1,19 @@
 using DavidsBlog.Application;
 using DavidsBlog.Infrastructure;
+using DavidsBlog.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 {
-    // Add services to the container.
     builder.Services
+        .AddPresentation()
         .AddApplication()
         .AddInfrastructure(builder.Configuration);
-
-    builder.Services.AddControllers();
 }
 
 var app = builder.Build();
 {
-    // Configure the HTTP request pipeline.
+    app.UseExceptionHandler("/error");
     app.UseHttpsRedirection();
-
-    app.UseAuthorization();
-
     app.MapControllers();
-
     app.Run();
 }
